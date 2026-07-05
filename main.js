@@ -3,41 +3,33 @@ const thumbBar = document.querySelector('.thumb-bar');
 const btn = document.querySelector('button');
 const overlay = document.querySelector('.overlay');
 
-/* Declaring the array of image filenames from MDN's live server */
-const images = [
-  'https://mdn.github.io/learning-area/javascript/building-blocks/gallery/images/pic1.jpg',
-  'https://mdn.github.io/learning-area/javascript/building-blocks/gallery/images/pic2.jpg',
-  'https://mdn.github.io/learning-area/javascript/building-blocks/gallery/images/pic3.jpg',
-  'https://mdn.github.io/learning-area/javascript/building-blocks/gallery/images/pic4.jpg',
-  'https://mdn.github.io/learning-area/javascript/building-blocks/gallery/images/pic5.jpg'
-];
+/* Array pointing directly to your uploaded image filenames */
+const images = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg', 'pic4.jpg', 'pic5.jpg'];
 
-/* Declaring the alternative text for each image */
+/* Alt texts assigned dynamically to your specific images */
 const alts = {
-  'pic1.jpg' : 'Closeup of a human eye',
-  'pic2.jpg' : 'Rock that looks like a wave',
-  'pic3.jpg' : 'Purple and white pansies',
-  'pic4.jpg' : 'Section of wall from an ancient Egyptian tomb',
-  'pic5.jpg' : 'Large white butterfly on a green leaf'
+  'pic1.jpg' : 'Cute cat looking closely',
+  'pic2.jpg' : 'Friendly dog sitting down',
+  'pic3.jpg' : 'Beautiful butterfly on a flower',
+  'pic4.jpg' : 'Scenic nature view',
+  'pic5.jpg' : 'Bright moon glowing in the night sky'
 };
 
-/* Looping through images to build the thumbnail bar */
-images.forEach((imgUrl, index) => {
+/* Dynamically looping through your repository files to construct the thumb bar */
+images.forEach((imgFile) => {
   const newImage = document.createElement('img');
-  newImage.setAttribute('src', imgUrl);
-  
-  const shortName = `pic${index + 1}.jpg`;
-  newImage.setAttribute('alt', alts[shortName]);
+  newImage.setAttribute('src', imgFile);
+  newImage.setAttribute('alt', alts[imgFile]);
   thumbBar.appendChild(newImage);
   
-  /* Adding a click event listener to each thumbnail image */
+  /* Changes the main showcase box when you click any thumbnail */
   newImage.addEventListener('click', (e) => {
     displayedImage.src = e.target.src;
     displayedImage.alt = e.target.alt;
   });
 });
 
-/* Wiring up the Darken/Lighten button */
+/* Darken/Lighten dimmer effect filter logic */
 btn.addEventListener('click', () => {
   const btnClass = btn.getAttribute('class');
   if (btnClass === 'dark') {
