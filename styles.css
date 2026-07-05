@@ -6,6 +6,7 @@ h1 {
 body {
   width: 640px;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .full-img {
@@ -14,9 +15,11 @@ body {
   height: 480px;
 }
 
+/* object-fit: cover ensures your custom Google images don't look distorted or stretched */
 .displayed-img {
   width: 640px;
   height: 480px;
+  object-fit: cover; 
 }
 
 .overlay {
@@ -26,6 +29,7 @@ body {
   width: 640px;
   height: 480px;
   background-color: rgba(0,0,0,0);
+  pointer-events: none; /* Allows clicks to pass through to the button */
 }
 
 button {
@@ -38,11 +42,24 @@ button {
   top: 10px;
   left: 10px;
   cursor: pointer;
+  z-index: 10;
 }
 
+.thumb-bar {
+  background: #eee;
+  padding: 5px;
+  margin-top: 10px;
+  overflow: auto;
+}
+
+/* Forces all 5 thumbnails to align symmetrically and share equal spacing */
 .thumb-bar img {
   display: block;
   width: 20%;
+  height: 80px;
+  object-fit: cover;
   float: left;
   cursor: pointer;
+  box-sizing: border-box;
+  border: 2px solid white;
 }
